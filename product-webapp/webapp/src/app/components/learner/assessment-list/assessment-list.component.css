@@ -1,0 +1,30 @@
+@import "../home/home.component.css";
+.button {
+    background: #0f172a;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .button:hover{
+    background: #2c3344 !important;
+    border-radius: 5px;
+    margin: 0 8px;
+}
+
+.elevation{
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #3b3c3d;
+    box-shadow:  -1px 1px #3b3c3d,
+         -2px 2px #3b3c3d,
+         -3px 3px #3b3c3d,
+         -4px 4px #3b3c3d,
+         -5px 5px #3b3c3d;
+  }

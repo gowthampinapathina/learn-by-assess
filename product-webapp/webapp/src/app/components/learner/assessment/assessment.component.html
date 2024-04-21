@@ -1,0 +1,18 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-2">Assessment</div>
+  <div class="page__content shadow p-3 position-relative">
+    <h1>Assessment to which you are assigned as assessor:</h1>
+    <div class=" position-absolute text-center">
+      <div *ngFor="let assess of assessments">
+        <div *ngFor="let assignment of assess.assignments">
+          <div *ngIf="assignment.assessorId==email" class="elevation">
+            <div style="margin: 2%;">Assessment Name:{{assignment.assignmentTemplate.assessmentName}}</div>
+            <div style="margin: 2%;">Assessment Discipline:{{assignment.assignmentTemplate.assessmentDiscipline}}</div>
+          <button class="button"
+            (click)="createAssignment(assess.batchId, assignment.assignmentId)">{{assignment.assignmentId}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

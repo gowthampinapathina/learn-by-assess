@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <h1>Welcome {{instructorName}} in LearnByAssess.</h1>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h3>Select Your batch to see Batch Details.</h3>
+    </div>
+    <hr>
+
+    <div class="container col-md-10">
+
+        <h3>Batch Name : {{batchName}}</h3>
+        <table class="table text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Email Id</th>
+                    <th scope="col">Conntact Detail</th>
+                    <th scope="col">Make Assessor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let learner of learnerLists">
+                    <td>{{learner.firstName}}</td>
+                    <td>{{learner.lastName}}</td>
+                    <td>{{learner.emailId}}</td>
+                    <td>{{learner.mobNo}}</td>
+                    <td><button type="button" class="btn btn-primary btn-sm" (click)="addAccessor(learner.emailId)">Assessor</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

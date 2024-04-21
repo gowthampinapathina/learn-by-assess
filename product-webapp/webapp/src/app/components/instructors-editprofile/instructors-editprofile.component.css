@@ -1,0 +1,43 @@
+button{
+    border:none;
+    box-shadow: none;
+    background: transparent;
+}
+
+vh{
+    padding-left:-2px;
+}
+
+h6{
+    font-size: medium;
+    padding-top: 13px;
+    padding-left: 2px;
+}
+body {
+    background: #BA68C8
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: #BA68C8;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}

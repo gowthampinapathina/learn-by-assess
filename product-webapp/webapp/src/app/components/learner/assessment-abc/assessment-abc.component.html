@@ -1,0 +1,74 @@
+<div class="container" style="position: relative; max-width: 80;">
+  <h2>Create Questions in the Assignment {{assignmentId}}</h2>
+  <form class="form-group" [formGroup]="praQuestionForm" novalidate>
+    <div class="form-group">
+      <label>Question. No</label>
+      <input type="number" class="form-control" formControlName="questionId" placeholder="1">
+    </div>
+    <div class="form-group">
+      <label>Question Type</label>
+      <select class="form-control" formControlName="questionType">
+        <option *ngFor="let questionType of questionTypes " [value]="questionType">{{questionType}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Question Level</label>
+      <select class="form-control" formControlName="questionLevel">
+        <option *ngFor="let questionLevel of levels" [value]="questionLevel">{{questionLevel}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Question Mark</label>
+      <input type="number" class="form-control" formControlName="questionMark" placeholder="1">
+    </div>
+    <div class="form-group">
+      <label>Question ?</label>
+      <input type="text" class="form-control" formControlName="questionStem" placeholder="What is Java?">
+    </div>
+    <!-- <div>
+      <label>Options</label>
+      <input type="text" placeholder="Option" [(ngModel)]="option">
+      <input type="text" placeholder="Status" [(ngModel)]="status">
+      <button (click)="addOption()">add</button>
+    </div> -->
+    <label>Option</label>
+      <div formArrayName="optionsStatus">
+        <div *ngFor="let opt of optionFormArr.controls; let i=index">
+          <div fxLayout="row" fxLayoutAlign="space-around center" [formGroupName]="i">
+            <input style="margin: 7px 0px; width:80%" type="text" placeholder="Option" formControlName="option" />
+            <!-- <input fxFlex="20%" type="text" placeholder="Option" formControlName="status" /> -->
+            <!-- <select fxFlex="20%" formControlName="state">
+              <option *ngFor="let value of statusValue" [value]="value">{{value}}</option>
+            </select> -->
+           <button fxFlex="20%" mat-icon-button color="warn" (click)="deleteOption(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          </div>
+        </div>
+      </div>
+      <button mat-icon-button color="primary" (click)="addNewOption()">
+        <mat-icon>add</mat-icon>
+      </button>
+    <!-- <div class="form-array" formArrayName="optionStatus" novalidate>
+      <div class="form-array" formArrayName="optionForm" *ngFor="let option of options">
+        <input type="text" class="form-control" formControlName="option" placeholder="Options"/>
+      </div>  
+    </div> -->
+    <!-- <ng-container formArrayName="optionsStatus">
+      <div *ngFor="let _ of optionStatus.controls; index as i">
+        <ng-container [formGroupName]="i">
+          <input type="text" class="form-control" formControlName="option" />
+        </ng-container>
+      </div>
+    </ng-container> -->
+    <div class="form-group">
+      <label>Correct Answer</label>
+      <input type="text" class="form-control" formControlName="correctAnswer" placeholder="It is an OOPS Language">
+    </div>
+    <button mat-raised-button color="primary" [disabled]="praQuestionForm.pristine" (click)="saveQuestion()">Save Question</button>
+    <span>{{message}}</span>
+    <button type="reset" (click)="resetQuestion()" [disabled]="praQuestionForm.pristine">AddNewQuestion/Reset</button>
+  </form>
+</div>
+
+

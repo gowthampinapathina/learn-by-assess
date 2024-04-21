@@ -1,0 +1,86 @@
+version: "2"
+
+services:
+  eureka-server:
+    build: eureka-server/
+    container_name: eureka-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+     - 8076:8076
+
+  api-gateway:
+    build: api-gateway/
+    container_name: gateway-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8080:8080
+
+  admin-service:
+    build: admin-service/
+    container_name: admin-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 9090:9090
+
+  assessment-service:
+    build: assessment-service/
+    container_name: assessment-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8085:8085
+
+  authentication-service:
+    build: authentication-service/
+    container_name: authentication-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8090:8090
+
+  instructor-service:
+    build: instructor-service/
+    container_name: instructor-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8081:8081
+
+  learner-service:
+    build: learner-service/
+    container_name: learner-container
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    depends_on:
+      - eureka-server
+    ports:
+      - 8900:8900
+
+  webapp:
+    build: ./product-webapp/webapp/
+    container_name: webapp
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 4200:4200

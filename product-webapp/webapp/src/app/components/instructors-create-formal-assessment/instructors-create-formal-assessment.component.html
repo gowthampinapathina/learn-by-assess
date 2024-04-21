@@ -1,0 +1,109 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container" style="position: relative; max-width: 50;">
+    <h2>Create Formal Assessment</h2>
+
+    <form class="form-group" [formGroup]="assignmentForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group">
+            <label>Assignment Id</label>
+
+            <input type="text" class="form-control" formControlName="assignmentId" placeholder="Java_1">
+        </div>
+        <div *ngIf="!assignmentId?.valid && (assignmentId?.dirty ||assignmentId?.touched)">
+            <div [hidden]="!assignmentId.errors.required">
+                <p>Assignment Id is required</p>
+            </div>
+            <div [hidden]="!assignmentId.errors.minlength">
+                <p>Min Length is 4</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Assessor Id</label>
+            <input type="email" class="form-control" formControlName="assessorId" placeholder="xyz@gmail.com" disabled>
+        </div>
+        <div *ngIf="!assessorId?.valid && (assessorId?.dirty ||assessorId?.touched)">
+            <div [hidden]="!assessorId.errors.required">
+                <p>You have to Select Assessor From Batch List in the Instructor Dashboard</p>
+            </div>
+        </div>    
+        <div class="form-group" formGroupName="assignmentTemplate" novalidate>
+            <div class="form-group">
+                <label>Assessment Name</label>
+                <input type="text" class="form-control" formControlName="assessmentName" placeholder="Java Basics Test">
+            </div>
+            <div *ngIf="!assessmentName?.valid && (assessmentName?.dirty ||assessmentName?.touched)">
+                <div [hidden]="!assessmentName.errors.required">
+                    <p>Assessment Name is required</p>
+                </div>
+                <div [hidden]="!assessmentName.errors.minlength">
+                    <p>Min Length is 10</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Assessment Discipline</label>
+                <input type="text" class="form-control" formControlName="assessmentDiscipline"
+                    placeholder="CS/Mech/Civil">
+            </div>
+            <div *ngIf="!assessmentDiscipline?.valid && (assessmentDiscipline?.dirty ||assessmentDiscipline?.touched)">
+                <div [hidden]="!assessmentDiscipline.errors.required">
+                    <p> Assessment Discipline is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Assessment Start Time</label>
+                <input type="datetime-local" class="form-control" formControlName="assessmentStartTime"
+                    placeholder="yyyy-MM-dd HH:mm:ss">
+            </div>
+            <div *ngIf="!assessmentStartTime?.valid && (assessmentStartTime?.dirty ||assessmentStartTime?.touched)">
+                <div [hidden]="!assessmentStartTime.errors.required">
+                    <p>Start Time is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Assessment End Time</label> <br>
+                <input type="datetime-local" class="form-control" formControlName="assessmentEndTime"
+                    placeholder="yyyy-MM-dd HH:mm:ss">
+            </div>
+            <div *ngIf="!assessmentEndTime?.valid && (assessmentEndTime?.dirty ||assessmentEndTime?.touched)">
+                <div [hidden]="!assessmentEndTime.errors.required">
+                    <p>End Time is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Total Score For Assessment</label>
+                <input type="number" class="form-control" formControlName="totalScore" placeholder="100">
+            </div>
+            <div *ngIf="!totalScore?.valid && (totalScore?.dirty ||totalScore?.touched)">
+                <div [hidden]="!totalScore.errors.required">
+                    <p>Total Score is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Assignment Review Status By Instructor</label>
+                <select class="form-control" formControlName="status">
+                    <option *ngFor="let status of statuses " [value]="status">{{status}}</option>
+                </select>
+            </div>
+            <div *ngIf="!status?.valid && (status?.dirty ||status?.touched)">
+                <div [hidden]="!status.errors.required">
+                    <p>Assignment Status is required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Assessment Concept</label>
+                <input type="" class="form-control" formControlName="assessmentConcept" placeholder="Brief About Java">
+            </div>
+            <div *ngIf="!assessmentConcept?.valid && (assessmentConcept?.dirty ||assessmentConcept?.touched)">
+                <div [hidden]="!assessmentConcept.errors.required">
+                    <p>Assessment Concept is required</p>
+                </div>
+                <div [hidden]="!assessmentConcept.errors.minlength">
+                    <p>Min Length is 10</p>
+                </div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="!assignmentForm.valid">Submit</button>
+        <span>{{message}}</span>
+        <button type="reset" (click)="revert()" [disabled]="assignmentForm.pristine">Reset</button>
+    </form>
+</div>

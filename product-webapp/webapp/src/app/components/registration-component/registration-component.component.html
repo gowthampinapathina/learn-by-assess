@@ -1,0 +1,174 @@
+<nav class="navbar row sticky-top navbar-dark bg-light" style="height: 50px; width: 100%; ">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">LearnByAssess</a>
+    <form class="d-flex">
+      <!-- <button class="btn btn-outline-primary me-2" type="submit" style="width: 70px;" routerLink="/signup" >Signup</button> -->
+      <button class="btn btn-outline-primary" type="button" style="width: 70px" routerLink="/login">Login</button>
+    </form>
+  </div>
+</nav>
+
+<div class="w3-container" style="text-align: center; height: 93%; width: 100%; background-image: url(https://www.athletadesk.com/wp-content/uploads/2016/08/join-background.jpg); background-repeat: no-repeat; background-size: cover;">
+
+  <div class="w3-container w3-center col-md-8" style="opacity:80%; height:50%; text-align: left; display: inline-block; margin-top: 80px;">
+    
+    <div class="card" style="border-radius: 20px;">
+      <div class="card-header text-center" style="color: black; background-color:#2474ed; font-weight: bold; font-size: medium; border-top-left-radius:20px; border-top-right-radius:20px;">
+        Register to Learn By Assess
+      </div>
+
+      <div class="continer col-md-10 offset-md-1" style="margin-top: 10px; margin-bottom: 10px;">
+
+
+        <form action="" (ngSubmit)="registerForm.form.valid && onSubmit()" #registerForm="ngForm"
+          [appMatchPassword]="['password', 'confirmPassword']" novalidate>
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" placeholder="Enter email" id="email" [(ngModel)]="learner.emailId"
+              name="email" #email="ngModel" required email>
+            <span class="text-danger" *ngIf="(email.touched || registerForm.submitted) && email.errors?.required">
+              Email is required
+            </span>
+            <span class="text-danger" *ngIf="email.touched && email.errors?.email">
+              Enter a valid email address
+            </span>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" placeholder="Enter password" id="password"
+                  [(ngModel)]="learner.password" name="password" #password="ngModel" appPasswordPattern required>
+                <span class="text-danger"
+                  *ngIf="(password.touched || registerForm.submitted) && password.errors?.required">
+                  Password is required
+                </span>
+                <span class="text-danger" *ngIf="password.touched && password.errors?.invalidPassword">
+                  Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1
+                  number
+                </span>
+              </div>
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" class="form-control" placeholder="Re-Enter password" id="confirmPassword"
+                  [(ngModel)]="learner.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" required>
+
+                <span class="text-danger"
+                  *ngIf="(confirmPassword.touched || registerForm.submitted) && confirmPassword.errors?.required">
+                  Confirm Password is required
+                </span>
+                <span class="text-danger" *ngIf="confirmPassword.touched && confirmPassword.errors?.passwordMismatch">
+                  Passwords doesnot match
+                </span>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" placeholder="Enter First name" id="firstName"
+                  [(ngModel)]="learner.firstName" name="firstName" #firstName="ngModel" required>
+                <span class="text-danger"
+                  *ngIf="(firstName.touched || registerForm.submitted) && firstName.errors?.required">
+                  First Name is required
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" placeholder="Enter Last name" id="lastName"
+                  [(ngModel)]="learner.lastName" name="lastName" #lastName="ngModel" required>
+
+                <span class="text-danger"
+                  *ngIf="(lastName.touched || registerForm.submitted) && lastName.errors?.required">
+                  Last Name is required
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="mobileNumber">Mobile Number:</label>
+                <input type="number" class="form-control" placeholder="Enter Mobile Number" id="mobileNumber" required
+                  [(ngModel)]="learner.mobNo" name="mobileNumber" name="mobileNumber" #mobileNumber="ngModel" required
+                  pattern="[6-9]{1}[0-9]{9}">
+
+                <span class="text-danger"
+                  *ngIf="(mobileNumber.touched || registerForm.submitted) && mobileNumber.errors?.required">
+                  Mobile Number is required
+                </span>
+                <span class="text-danger" *ngIf="mobileNumber.errors?.pattern">
+                  Mobile Number Not Valid
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="age">Date of Birth</label>
+                <input type="date" class="form-control" placeholder="Enter Date of Birth" id="age"
+                  [(ngModel)]="learner.age" name="age" #age="ngModel" required>
+
+                <span class="text-danger" *ngIf="(age.touched || registerForm.submitted) && age.errors?.required">
+                  Date of Birth is required
+                </span>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label class="mr-sm-2" for="genderSelect">Gender:</label>
+              <select class="custom-select mr-sm-2" id="genderSelect" [(ngModel)]="learner.gender" name="gender"
+                #gender="ngModel" required>
+                <!-- <option selected>Select...</option> -->
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <span class="text-danger" *ngIf="(gender.touched || registerForm.submitted) && gender.errors?.required">
+                Gender is required
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" id="tnc" name="tnc" required>
+                  I agree with the Terms and Conditions.
+                </label>
+                <br>
+                <!-- <span class="text-danger" *ngIf="registerForm.submitted">
+                Please read Terms and Conditions
+              </span> -->
+              </div>
+            </div>
+          </div>
+
+
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" id="register">Register</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

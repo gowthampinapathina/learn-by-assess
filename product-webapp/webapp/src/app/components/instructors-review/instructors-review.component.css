@@ -1,0 +1,8 @@
+.container{
+    margin:29px;
+    width: 20cm;
+    border:2px solid black;
+}
+div.container ul{
+    text-align: center;
+}

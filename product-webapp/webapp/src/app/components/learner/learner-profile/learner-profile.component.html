@@ -1,0 +1,74 @@
+
+
+
+  <div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">User Profile</div>
+    <div class="page__content shadow p-3 position-relative">
+      <div class="page__content-data position-absolute text-center">
+        <div class="student-profile py-4">
+          <!-- <div class="container"> -->
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="card shadow-sm">
+                  <div class="card-header bg-transparent text-center">
+                    <img class="profile_img" src="../../assets/user.jpg" alt="student dp">
+                    <h3>{{learner.firstName}} {{learner.lastName}}</h3>
+                  </div>
+                  <div class="card-body">
+                    <p class="mb-0"><strong class="pr-1">Learner Email ID</strong></p>
+                    <p class="mb-0">{{learner.emailId}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="card shadow-sm">
+                  <div class="card-header bg-transparent border-0">
+                    <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+                  </div>
+                  <div class="card-body pt-0">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th width="50%">Role</th>
+                        <td width="2%">:</td>
+                        <td>Learner</td>
+                      </tr>
+                      <tr>
+                        <th width="50%">Mobile Number	</th>
+                        <td width="2%">:</td>
+                        <td>{{learner.mobNo}}</td>
+                      </tr>
+                      <tr>
+                        <th width="50%">Gender</th>
+                        <td width="2%">:</td>
+                        <td>{{learner.gender}}</td>
+                      </tr>
+                      <tr>
+                        <th width="50%">Age</th>
+                        <td width="2%">:</td>
+                        <td>{{learner.age}}</td>
+                      </tr>
+                      <tr>
+                        <th width="50%">Password</th>
+                        <td width="2%">:</td>
+                        <td>{{learner.password}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                  <div style="height: 26px"></div>
+                <div class="card shadow-sm">
+                  <div class="card-header bg-transparent border-0">
+                    <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Other Information</h3>
+                  </div>
+                  <div class="card-body pt-0">
+                    <p>LearnByAssess help ever individual to grow in there own pase and time.</p>
+                    <p>Learning is the process of acquiring new understanding, knowledge, behaviors, skills, values, attitudes, and preferences.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>

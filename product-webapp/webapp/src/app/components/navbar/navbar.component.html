@@ -1,0 +1,17 @@
+
+<nav class="navbar row sticky-top navbar-dark bg-light" style="height: 50px; width: 100%;" >
+    <div class="container-fluid" >
+      <a class="navbar-brand" routerLink="/">LearnByAssess</a>
+      <form class="d-flex">
+        <button class="btn btn-outline-primary me-2" type="submit" style="width: 70px;" routerLink="/signup" >Signup</button>
+        <button class="btn btn-outline-primary" type="submit" style="width: 70px" routerLink="/login">Login</button>
+      </form>
+    </div>
+  </nav>
+
+  <div>
+      <app-home-component></app-home-component>
+      <!-- <app-registration-component *ngIf="signup"></app-registration-component>
+      <app-login *ngIf="login"></app-login>
+       -->
+  </div>

@@ -1,0 +1,13 @@
+<div class="container-fluid page">
+    <div class="d-flex page__box p-3 mt-2">Assessment</div>
+    <div class="page__content shadow p-3 position-relative">
+        <h1>Below are the quizzes assigned to you by admin:</h1>
+        <div *ngFor="let assess of assessment"  class="elevation">
+            Batch Id: {{assess.batchId}}
+            <div *ngFor="let assignment of assess.assignments">
+                <!-- <button>{{assignment.assignmentId}}</button> -->
+                <button class="button" (click)="takeAssignment(assess.batchId,assignment.assignmentId)">{{assignment.assignmentId}}</button>
+            </div>
+        </div>
+    </div>
+</div>

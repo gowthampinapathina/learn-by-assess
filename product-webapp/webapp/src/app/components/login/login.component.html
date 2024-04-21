@@ -1,0 +1,67 @@
+<nav class="navbar row sticky-top navbar-dark bg-light" style="height: 50px; width: 100%;">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">LearnByAssess</a>
+    <form class="d-flex">
+      <button class="btn btn-outline-primary me-2" type="submit" style="width: 70px;"
+        routerLink="/signup">Signup</button>
+      <!-- <button class="btn btn-outline-primary" type="submit" style="width: 70px" routerLink="/login">Login</button> -->
+    </form>
+  </div>
+</nav>
+
+<section class="mh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-20">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="bg3.jpg" class="img-fluid" alt="Sample image" style="border-bottom-left-radius: 70% 60px;
+          border-bottom-right-radius: 70% 60px;
+          border-top-left-radius: 70% 60px;
+          border-top-right-radius: 70% 60px;">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form (ngSubmit)="loginForm.form.valid && onSubmit()" #loginForm="ngForm" novalidate>
+
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0">Login</p>
+          </div>
+
+          <h3 class="text-center text-danger">{{errorMessage}}</h3>
+
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="email">Email address</label>
+            <input style="font-size: medium;" name="email" type="email" id="email" class="form-control form-control-lg"
+              placeholder="Enter a valid email address" [(ngModel)]="authentication.emailId" #email="ngModel"
+              required />
+            <span class="text-danger" *ngIf="(email.touched || loginForm.submitted) && email.errors?.required">
+              Email is required
+            </span>
+          </div>
+
+
+          <div class="form-outline mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input style="font-size: medium;" name="password" type="password" id="password"
+              class="form-control form-control-lg" placeholder="Enter password" [(ngModel)]="authentication.password"
+              #password="ngModel" required />
+            <span class="text-danger" *ngIf="(password.touched || loginForm.submitted) && password.errors?.required">
+              Password is required
+            </span>
+          </div>
+
+
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a style="color:red" href="#!"
+                class="link-danger" routerLink="/signup">Register</a></p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
